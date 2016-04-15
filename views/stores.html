@@ -1,0 +1,108 @@
+
+<!-- Meta -->
+<update-title title="Find Your Nearest Sofology Store"></update-title>
+<update-meta name="description" content="Sofology offers sofas at low-low prices not yo-yo prices. Exclusive designs and quick delivery, browse online or visit your local Sofology store today."></update-meta>
+<update-meta itemprop="description" content="Sofology offers sofas at low-low prices not yo-yo prices. Exclusive designs and quick delivery, browse online or visit your local Sofology store today."></update-meta>
+
+<!-- Store list -->
+
+
+<div class="container city-ph country-ph">
+	<div class="store-locator-form desk-mb clearfix">
+		<div class="layout__item u-1/2 u-1/1-mob u-p city-p country-p world-p">
+			<h2 class="uppercase">Store Locator</h2>
+			<p>We've got stores right across the country. Pop your postcode into the search box below to find your nearest Sofology, as well as opening hours, address details and even directions. Pretty handy eh?</p>
+
+
+			<form name="postcodeSearch" id="find-a-store" ng-submit="submit()">
+				<p>Please enter your postcode or town:</p>
+				<input type="text" placeholder="Postcode or Town *" ng-model="postcode" name="postcode" id="userPostcode" required>
+				<input type="submit" class="btn uppercase" value="Find"  analytics-on="click" analytics-category="Store-finder" analytics-event="Searched for store">
+			</form>
+		</div>
+	</div>
+
+	<div class="layout layout--flush u-p clearfix stores">
+		<h1 ng-if="!postcode" class="h5 uppercase">Sofology A-Z</h1>
+		<p ng-if="postcode" class="u-mb uppercase searched-for">You searched for <em>{{postcode}}</em></p>
+		<div class="layout__item u-1/1 u-1/2-country u-pb map">
+				<div map-lazy-load="https://maps.google.com/maps/api/js" class="stores-map">
+					<ng-map center="{{center}}" zoom="{{zoom}}" class="gmap" scrollwheel="false">
+						<marker ng-repeat="store in stores | limitTo:quantity | unique:'id'"
+							position="[{{store.lat}}, {{store.lng}}]"
+							title="{{store.outlet}}"
+							icon="{
+								url:'//images.sofology.co.uk/image/upload/v1455638094/Sofology/stores/map-marker.png'
+							}">
+						</marker>
+						<marker position="{{postcode}}"></marker>
+					</ng-map>
+				</div>
+		</div><!--
+		--><div class="layout__item u-1/1 u-1/2-country city-mb country-pr+ stores-list" ng-class="storesContainerClass">
+
+			<div class="layout layout--flush">
+				<div class="layout__item u-1/1 u-1/2-city" ng-class="storesClass" ng-repeat="store in stores | orderBy:order | limitTo:quantity | unique:'id'">
+					<address>
+						<h2 ng-if="store.outlet" class="title uppercase"><a ng-href="/store-locator/{{store.outlet}}">{{store.outlet}} Sofology</a></h2>
+						<p ng-if="store.phone" class="tel">t. {{store.phone}}</p>
+						<p class="address1"><span ng-if="store.addressOne">{{store.addressOne}}, <br /></span>
+							<span ng-if="store.addressTwo">{{store.addressTwo}}, <br /> </span>
+							<span ng-if="store.addressThree">{{store.addressThree}}, <br /></span>
+							<span ng-if="store.town">{{store.town}}, <br /></span>
+							<span ng-if="store.county">{{store.county}}, <br /></span>
+							<span ng-if="store.postCode">{{store.postCode}}</span>
+							<span ng-if="store.distance" class="distance u-mt--"><strong>Distance: <br /> {{store.distance | number:2}} miles</strong></span>
+						</p>
+						<a scroll-to class="btn btn--dark uppercase desk-p-" ng-href="/store-locator/{{ store.outlet }}">Visit Store</a>
+					</address>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<!-- Why Shop with Sofology -->
+<div class="why-shop">
+	<div class="container u-p desk-pv">
+		<h2 class="h3 text-center uppercase">Why shop with Sofology?</h2>
+		<div class="layout layout--flush">
+			<div class="layout__item u-1/1 u-1/2-town u-1/2-city">
+				<img src="http://images.sofology.co.uk/image/upload/v1455205512/Sofology/stores/usp-front.png">
+			</div><!--
+			--><div class="layout__item u-1/1 u-1/2-town u-1/2-city">
+				<img src="http://images.sofology.co.uk/image/upload/v1455205512/Sofology/stores/usp-back.png">
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Comfy Ways to Pay -->
+<div class="comfy-ways-to-pay u-p desk-pv">
+	<div class="container text-center">
+		<h2 class="uppercase">3 comfy ways to pay</h2>
+		<div class="layout layout--flush">
+			<div class="layout__item u-1/1 u-1/3-city">
+				<img src="http://images.sofology.co.uk/image/upload/v1455635975/Sofology/stores/purse.png">
+				<h3 class="h5">Pay by cash, <br>Debit or Credit Card</h3>
+				<p>To keep it nice and easy, just pay by cash. You can even pay a 10% deposit and pay the rest prior to delivery.</p>
+			</div><!--
+			--><div class="layout__item u-1/1 u-1/3-city city-ph">
+				<img src="http://images.sofology.co.uk/image/upload/v1455635975/Sofology/stores/cal.png">
+				<h3 class="h5 uppercase">Buy today, pay <br>nothing for a year</h3>
+				<p>For a comfier way to pay, put down a 10% deposit today pay nothing for a whole year.</p>
+			</div><!--
+			--><div class="layout__item u-1/1 u-1/3-city">
+				<img src="http://images.sofology.co.uk/image/upload/v1455635975/Sofology/stores/0.png">
+				<h3 class="h5 uppercase">Up to 4 years <br>interest free credit</h3>
+				<p>With 0% finance available on everything we sell, we can create an interest free payment plan to suit you.</p>
+			</div>
+<!-- 			<div class="triangle pull-right"></div> -->
+			<div class="layout__item value u-1/1">
+				<div class="triangle pull-right"></div>
+				<p class="uppercase pull-right">Value Works</p>
+			</div>
+		</div>
+	</div>
+</div>
