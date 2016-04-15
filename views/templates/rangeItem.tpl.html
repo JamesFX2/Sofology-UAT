@@ -1,12 +1,11 @@
 <ul class="items list-unstyled list-inline u-pr u-ml-" vertilize-container>
-	<li ng-repeat="item in vm.items" class="item" >
+	<li ng-repeat="item in vm.items" class="item" itemscope itemtype="http://schema.org/Product">
 		<header class="" vertilize>
-			<h3 class="item__title">{{ item.name }}</h3>
-
+			<h3 class="item__title" itemprop="name" content="{{ model.range.range }} Collection {{ item.name }}">{{ item.name }}</h3>
 		</header>
 		<figure class="item__img" ng-click="vm.type.modal = item">
 			<i class="icon-search-plus centerer"></i>
-			<img ng-src="{{ item.scoopImageThumb }}" class="">
+			<img alt="View {{ model.range.range }} {{ item.name }}" ng-src="{{ item.scoopImageThumb }}" class="">
 		</figure>
 		<div class="meta clearfix">
 			<p class="item__dimensions u-mb0 pull-left"> {{ item.dimensions }}</p>
@@ -14,7 +13,8 @@
 		</div>
 		<div class="actions u-mb- clearfix">
 			<div class="prices pull-left">
-				<p class="item__price ">{{ item.price | currency:"£":0 }}</p>
+				<p itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="item__price "><meta itemprop="priceCurrency" content="GBP"/><span
+          itemprop="price" content="{{ item.price }}">{{ item.price | currency:"£":0 }}</span><link itemprop="availability" href="http://schema.org/InStock" ng-if="item.stockAvailability" /></p>
 				<div ng-show="item.hasOutlet" class="item__refurb clearfix" ng-controller="ModalCtrl"><a href ng-click="openRefurb()">{{item.outletDescription}}</a></div>
 			</div>
 			<button class="btn btn--dark btn--small uppercase pull-right" click-contact-us  enquiry-type="contactUs">Call</button>
