@@ -1,0 +1,159 @@
+
+<!-- Meta -->
+
+<update-title title="{{ model.title }}"></update-title>
+<update-meta name="description" content="{{model.meta}}"></update-meta>
+<update-meta itemprop="description" content="{{model.meta}}"></update-meta>
+
+<div style="min-height: 1000px;">
+
+	<div ng-show="model.loading === true" style="margin: 0 auto; text-align: center; padding-top: 30px;">
+		<i class="fa fa-spinner fa-spin fa-2x"></i>
+	</div>
+
+
+
+<div ng-show="model.loading === false" ng-catalog class="catalog"><div ng-catalog="model.catalogItems" >
+
+	<article ng-hide="model.catalogItems.length" class="range-strip unloaded" style="height: 500px"></article>
+	<article
+		ng-repeat-start="item in model.catalogItems"
+		on-finish-render="updateActive()"
+		class="range-strip unloaded cat-no-{{ item.catNo }} {{ item.view === 'room' ? 'lifestyle-view' : '' }}"
+		id="{{ item.rangeId }}"
+		data-catno="{{ item.catNo }}"
+		data-rangename="{{ item.rangeName }}"
+		data-pricesort="{{ item.currentPrice }}"
+		itemscope itemtype="http://schema.org/Product"
+	>
+
+		<header class="range-strip__header">
+			<h2><a href="/sofas/{{ item.rangeName | lowercase }}" title="View the {{ item.rangeName }} Collection" scroll-to ><span itemprop="name">{{ item.rangeName }} Collection <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">from <span itemprop="priceCurrency" content="GBP">&pound;</span><span itemprop="price" content="{{ item.lowestPriceInRange }}">{{ item.lowestPriceInRange }}</span></span></a></h2>
+			<ul class="switch-wrapper {{ item.view === 'room' ? 'lifestyle-view' : '' }}">
+				<li class="view sofa-view toggle-all">Sofa view <span>Set All?</span></li>
+				<li class="switch"></li>
+				<li class="view room-view toggle-all">Room view <span>Set All?</span></li>
+			</ul>
+		</header>
+
+		<range-mini-view class="range-strip__mini-view"></range-mini-view>
+
+		<footer class="range-strip__footer">
+			<ul class="range-strip__footer__details layout layout__small">
+				<li class="range-strip__footer__details__item range-strip__footer__details__item--items layout__item u-1/3">{{ item.numberOfProductItems }} items</li><!--
+				--><li class="range-strip__footer__details__item range-strip__footer__details__item--colours{{ item.isLeather ? ' range-strip__footer__details__item--leather' : ' range-strip__footer__details__item--fabric' }} layout__item u-1/3">{{ item.numberOfVariants }} {{ item.isLeather ? 'leathers' : 'fabrics' }}</li><!--
+				--><li class="range-strip__footer__details__item range-strip__footer__details__item--delivery layout__item u-1/3" ng-if="item.earliestStockAvailability != ''">
+					FROM {{item.earliestStockAvailability}}
+				</li>
+
+
+			</ul>
+			<a href="/sofas/{{ item.rangeName | lowercase }}" scroll-to class="button" title="View the {{ item.rangeName }} Collection" analytics-on="click" analytics-category="view_range" analytics-event="click_cat_cta" analytics-label="{{item.rangeName}}">View Full Range</a>
+
+		</footer>
+	</article>
+
+
+
+	<article ng-if="$index == 6 || $index == 55 || $index == 104" class="banner banner--store-finder">
+		<div class="text-area">
+			<h3>Find your nearest store</h3>
+			<p>Weâ€™ve got 33 stores nationwide all with designer room sets to inspire you as you shop</p>
+			<a href="/store-locator" class="button" scroll-to>Find a store</a>
+		</div>
+	</article>
+
+	<article ng-if="$index == 13 || $index == 62 || $index == 111" class="banner banner--little-neal">
+		<div class="text-area">
+			<h3>Free Sofology Neal <br>with every sofa order</h3>
+		</div>
+	</article>
+
+	<article ng-if="$index == 20 || $index == 69" class="banner banner--call-direct">
+		<div>
+			<div class="text-area city-mt+ world-mt">
+				<h2>Weâ€™re here to give <br>you advice &amp; place <br>your order...</h2>
+			</div>
+			<div class="text-area text-area--one">
+				<p>Call us <span class="bold">FREE</span> today <span class="show-country"> on</span>: <span class="bold contact-number">0800 140 40 40</span></p>
+				<p class="show-continent small-font">Weâ€™re open today 8am - 11pm</p>
+				<p class="show-country small-text hide-elems" >Or we can call you...</p>
+				<a href="#" class="btn btn--inverted uppercase hide-elems ring-back activator" data-activate="ring-back" click-contact-us>Request a call back</a>
+			</div>
+			<div class="text-area text-area--two show-continent">
+				<p>Or we can call you at a <br>time that suits</p>
+				<a href="#" class="btn btn--inverted uppercase ring-back activator" data-activate="ring-back" click-contact-us>Request a call back</a>
+			</div>
+		</div>
+	</article>
+
+	<article ng-if="$index == 27 || $index == 76" id="lowlowprices-panel" class="banner banner--low-low">
+		<div class="layout layout--flush u-p-- u-pt+ village-ph- city-pv+ panel">
+		<div class="container">
+			<div class="content-wrapper country-ph- layout__item u-1/1 u-1/2-city city-ml">
+				<div class="content text-center city-ph-- world-ml+ continent-ml+">
+					<div class="block u-ph-- village-ph-">
+						<h2 class="fs-emeric-thin country-mb+">Low Low Prices,<br>not Yo-Yo Prices...</h2>
+						<p class="country-mb+ world-ph village-mt u-ph- city-mt- city-ph-">Permanently low prices mean no risk of paying double until they're reduced after, and no rushing or pushing for a sale. That's why your dream sofa will always cost less with Sofology!</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</article>
+
+	<article ng-if="$index == 34 || $index == 83" id="guarantee-panel" class="banner banner--ten-year">
+		<div class="layout layout--flush city-p city-pv+ country-p+ panel u-ph-">
+			<div class="container">
+				<div class="content-wrapper">
+					<div class="layout__item u-3/5-city u-1/2-country text-center">
+						<div class="block village-ph town-ph+ city-ph+">
+							<h2 class="fs-emeric-thin city-mb">10 Year Structural guarantee. <br>Tested for you by Neal</h2>
+							<p class="u-mb u-ph city-mb city-mb+ country-ph+ country-ph+ world-ph++ village-ph town-ph+ city-ph">No sofa leaves the building unless it's had the thumbs up from Neal. Well, if sloths had thumbs that is. But as well as the Neal seal of approval, all our sofas come with our sturdy, 10 year structural guarantee.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+
+	<article ng-if="$index == 41 || $index == 90" id="personalisation-panel" class="banner banner--personalisation">
+		<div class="layout layout--flush panel">
+			<div class="container clearfix">
+				<div class="content-wrapper">
+					<div class="content layout__item u-3/5-city text-center village-ml+ village-ph village-mt town-ph">
+						<div class="block continent-ph world-ph+ u-ml++ village-ml++ village-ph town-ph+">
+							<h2 class="fs-emeric-thin continent-mb+">The look you want in<br>the combination you need</h2>
+							<p class="u-mb town-mb+ continent-ph++ village-ph++ city-ph-">Personalise your product, with more options and configurationsâ€¦</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+
+	<article ng-if="$index == 48 || $index == 97" id="nopressure-panel" class="banner banner--no-pressure">
+		<div class="layout layout--flush city-pt clearfix panel">
+			<div class="container">
+				<div class="content-wrapper town-ph+">
+					<div class="layout__item u-3/5-city u-3/5-country text-center village-ph town-ph country-ph">
+						<div class="block village-ph++ country-ph+ country-mt country-ml+">
+
+							<h2 class="fs-emeric-thin u-ph+ village-ph+ town-ph++ break-title country-mb" style="
+    display: inline-block;
+">  No salesmen,<br> No commission,<br class="hide-country"> No pressure.</h2>
+							<p class="country-ph++ town-ph continent-ph++ u-ph-- village-ph- town-ph+">At Sofology we hate to be rushed and we don't like commission hungry salespeople pushing us into buying something that might not be right for usâ€¦</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+
+	<div ng-repeat-end ng-hide></div>
+</div>
+
+</div>
+<div keep-scroll-pos></div>
