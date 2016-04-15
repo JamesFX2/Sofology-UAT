@@ -43,15 +43,15 @@
 
 			<div class="layout layout--flush">
 				<div class="layout__item u-1/1 u-1/2-city" ng-class="storesClass" ng-repeat="store in stores | orderBy:order | limitTo:quantity | unique:'id'">
-					<address>
-						<h2 ng-if="store.outlet" class="title uppercase"><a ng-href="/store-locator/{{store.outlet}}">{{store.outlet}} Sofology</a></h2>
-						<p ng-if="store.phone" class="tel">t. {{store.phone}}</p>
-						<p class="address1"><span ng-if="store.addressOne">{{store.addressOne}}, <br /></span>
+					<address itemscope itemtype="http://schema.org/LocalBusiness">
+						<h2 itemprop="name" ng-if="store.outlet" class="title uppercase"><a itemprop="url" ng-href="/store-locator/{{store.outlet}}">{{store.outlet}} Sofology</a></h2>
+						<p ng-if="store.phone" class="tel">t. <span itemprop="telephone">{{store.phone}}</span></p>
+						<p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="address1"><span itemprop="streetAddress"><span ng-if="store.addressOne">{{store.addressOne}}, <br /></span>
 							<span ng-if="store.addressTwo">{{store.addressTwo}}, <br /> </span>
-							<span ng-if="store.addressThree">{{store.addressThree}}, <br /></span>
-							<span ng-if="store.town">{{store.town}}, <br /></span>
-							<span ng-if="store.county">{{store.county}}, <br /></span>
-							<span ng-if="store.postCode">{{store.postCode}}</span>
+							<span ng-if="store.addressThree">{{store.addressThree}}, <br /></span>/span>
+							<span itemprop="addressLocality" ng-if="store.town">{{store.town}}, <br /></span>
+							<span itemprop="addressRegion" ng-if="store.county">{{store.county}}, <br /></span>
+							<span itemprop="postalCode" ng-if="store.postCode">{{store.postCode}}</span>
 							<span ng-if="store.distance" class="distance u-mt--"><strong>Distance: <br /> {{store.distance | number:2}} miles</strong></span>
 						</p>
 						<a scroll-to class="btn btn--dark uppercase desk-p-" ng-href="/store-locator/{{ store.outlet }}">Visit Store</a>
