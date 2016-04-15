@@ -1,0 +1,27 @@
+<ul class="items list-unstyled list-inline u-pr u-ml-" vertilize-container>
+	<li ng-repeat="item in vm.items" class="item" >
+		<header class="" vertilize>
+			<h3 class="item__title">{{ item.name }}</h3>
+
+		</header>
+		<figure class="item__img" ng-click="vm.type.modal = item">
+			<i class="icon-search-plus centerer"></i>
+			<img ng-src="{{ item.scoopImageThumb }}" class="">
+		</figure>
+		<div class="meta clearfix">
+			<p class="item__dimensions u-mb0 pull-left"> {{ item.dimensions }}</p>
+			<p class="item__delivery u-mb0 icon-delivery pull-right" ng-if="item.stockAvailability">{{ item.stockAvailability }}</p>
+		</div>
+		<div class="actions u-mb- clearfix">
+			<div class="prices pull-left">
+				<p class="item__price ">{{ item.price | currency:"£":0 }}</p>
+				<div ng-show="item.hasOutlet" class="item__refurb clearfix" ng-controller="ModalCtrl"><a href ng-click="openRefurb()">{{item.outletDescription}}</a></div>
+			</div>
+			<button class="btn btn--dark btn--small uppercase pull-right" click-contact-us  enquiry-type="contactUs">Call</button>
+
+
+			</div>
+		</div>
+
+	</li>
+</ul>
