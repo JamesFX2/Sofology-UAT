@@ -24,10 +24,11 @@
 		data-catno="{{ item.catNo }}"
 		data-rangename="{{ item.rangeName }}"
 		data-pricesort="{{ item.currentPrice }}"
+		itemscope itemtype="http://schema.org/Product"
 	>
 
 		<header class="range-strip__header">
-			<h2><a href="/sofas/{{ item.rangeName | lowercase }}" title="View the {{ item.rangeName }} Collection" scroll-to >{{ item.rangeName }} Collection <span>from &pound;{{ item.lowestPriceInRange }}</span></a></h2>
+			<h2><a href="/sofas/{{ item.rangeName | lowercase }}" title="View the {{ item.rangeName }} Collection" scroll-to ><span itemprop="name">{{ item.rangeName }} Collection <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">from <span itemprop="priceCurrency" content="GBP">&pound;</span><span itemprop="price" content="{{ item.lowestPriceInRange }}">{{ item.lowestPriceInRange }}</span></span></a></h2>
 			<ul class="switch-wrapper {{ item.view === 'room' ? 'lifestyle-view' : '' }}">
 				<li class="view sofa-view toggle-all">Sofa view <span>Set All?</span></li>
 				<li class="switch"></li>
