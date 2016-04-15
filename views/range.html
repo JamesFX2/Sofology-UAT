@@ -1,4 +1,3 @@
-
 <!-- Meta -->
 <update-title title="{{ model.range.rangeTitleCase }} {{model.range.material }} Sofa Range | Sofology"></update-title>
 <update-meta name="description" content="{{ model.range.range }} {{model.range.material }} Sofa Range at a comfy price from Sofology. Delivery within 7 days, no hassle, no hot air and no hard sell."></update-meta>
@@ -12,9 +11,9 @@
 
 			<header class="clearfix" sticky-class="rdp-stuck" body-class="body-rdp-stuck" sticky>
 				<div class="inner-header">
-					<h2 class="uppercase pull-left"><img alt="grey Sofology logo" src="http://images.sofology.co.uk/image/upload/v1459934842/Sofology/Range/rdp-logo.png">{{ model.range.range }}</h2>
+					<h2 class="uppercase pull-left"><img alt="greyscale Sofology logo" src="http://images.sofology.co.uk/image/upload/v1459934842/Sofology/Range/rdp-logo.png">{{ model.range.range }}</h2>
 					<ul class="jump-menu list-unstyled list-inline" ng-class="{'active': isActive}">
-						<li ng-click="activeButton()" class="">Jump toâ€¦ <i class="fa fa-angle-down"></i></li>
+						<li ng-click="activeButton()" class="">Jump to… <i class="fa fa-angle-down"></i></li>
 						<li ng-click="hideJump()" scroll-to dom-element="#swatches" offset="-107">Swatches</li>
 						<li ng-click="hideJump()" scroll-to dom-element="#range-items" offset="-83">Items</li>
 						<li ng-click="hideJump()" scroll-to dom-element="#delivery" offset="-83">Delivery</li>
@@ -29,22 +28,22 @@
 			<section class="main-product-visual">
 				<div class="thumbs" ng-if="model.range.videos.length < 1">
 					<slick settings="slicks.visualOptions" class="visual-options">
-						<li class="visual-options__option visual-options__option--active" ng-click="updateHero('lifestyle', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.lifestyle.thumb }}"></li>
-						<li class="visual-options__option visual-options__option--scoop" ng-click="updateHero('scoop', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.scoop.thumb }}"></li>
-						<li class="visual-options__option" ng-click="updateHero('cameoPic1', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero.cameoPic1.thumb }}"></li>
-						<li class="visual-options__option" ng-click="updateHero('cameoPic2', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero.cameoPic2.thumb }}"></li>
-						<li class="visual-options__option" ng-click="updateHero('cameoPic3', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero.cameoPic3.thumb }}"></li>
-						<li class="visual-options__option" ng-click="updateHero('cameoPic4', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero.cameoPic4.thumb }}"></li>
+						<li class="visual-options__option visual-options__option--active" ng-click="updateHero('lifestyle', $event, model.range)"><img alt="See {{ model.range.range }} Product Image" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.lifestyle.thumb }}"></li>
+						<li class="visual-options__option visual-options__option--scoop" ng-click="updateHero('scoop', $event, model.range)"><img alt="See {{ model.range.range }} Reference Image" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.scoop.thumb }}"></li>
+						<li class="visual-options__option" ng-click="updateHero('cameoPic1', $event, model.range)"><img alt="See {{ model.range.range }} Sofa View 1" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero.cameoPic1.thumb }}"></li>
+						<li class="visual-options__option" ng-click="updateHero('cameoPic2', $event, model.range)"><img alt="See {{ model.range.range }} Sofa View 2" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero.cameoPic2.thumb }}"></li>
+						<li class="visual-options__option" ng-click="updateHero('cameoPic3', $event, model.range)"><img alt="See {{ model.range.range }} Sofa View 3" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero.cameoPic3.thumb }}"></li>
+						<li class="visual-options__option" ng-click="updateHero('cameoPic4', $event, model.range)"><img alt="See {{ model.range.range }} Sofa View 4" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero.cameoPic4.thumb }}"></li>
 					</slick>
 				</div>
 				<div class="thumbs" ng-if="model.range.videos.length > 0">
 					<slick settings="slicks.visualOptions" class="visual-options">
-						<li class="visual-options__option visual-options__option--active" ng-click="updateHero('lifestyle', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.lifestyle.thumb }}"></li>
-						<li class="visual-options__option visual-options__option--scoop" ng-click="updateHero('scoop', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.scoop.thumb }}"></li>
-						<li class="visual-options__option visual-options__option--video" ng-repeat="video in model.range.videos" ng-click="updateHero(video.type, $event, model.range, video)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero['cameoPic' + ($index+1)].thumb }}"></li>
+						<li class="visual-options__option visual-options__option--active" ng-click="updateHero('lifestyle', $event, model.range)"><img alt="See {{ model.range.range }} Product Image" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.lifestyle.thumb }}"></li>
+						<li class="visual-options__option visual-options__option--scoop" ng-click="updateHero('scoop', $event, model.range)"><img alt="See {{ model.range.range }} Reference Image" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.scoop.thumb }}"></li>
+						<li class="visual-options__option visual-options__option--video" ng-repeat="video in model.range.videos" ng-click="updateHero(video.type, $event, model.range, video)"><img alt="See {{ model.range.range }} Sofa View" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero['cameoPic' + ($index+1)].thumb }}"></li>
 					</slick>
 				</div>
-				<figure ng-class="activeHero == 'scoop' ? 'view-area ' + 'scooped' : 'view-area ' + 'lifestyle' " id="Hero"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.lifestyle.full }}"></figure>
+				<figure ng-class="activeHero == 'scoop' ? 'view-area ' + 'scooped' : 'view-area ' + 'lifestyle' " id="Hero"><img alt="The {{ model.range.range }} Sofa Range" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.lifestyle.full }}"></figure>
 			</section>
 
 			<!-- Materials -->
@@ -66,7 +65,7 @@
 							<ul class="swatch-group list-unstyled list-inline u-p-" vertilize-container inertia-scroll inertia-refresh="activeColourChange">
 								<li ng-repeat="variant in model.range.activeColour.activeQuality.variants" ng-click="updateActiveVariant(model.range, variant)" class="{{ model.range.activeColour.activeQuality.activeVariant === variant ? 'active' : '' }} text-center scroll-item">
 									<figure>
-										<img class="variant-thumb u-mb-" ng-src="{{ variant.thumb }}">
+										<img alt="Select {{ model.range.range }} {{ variant.name }}" class="variant-thumb u-mb-" ng-src="{{ variant.thumb }}">
 										<figcaption class="variant-name" vertilize>{{ variant.name }}</figcaption>
 										<span class="active icon-tick" vertilize>Selected Swatch</span>
 									</figure>
@@ -95,10 +94,10 @@
 						<button class="btn close" ng-click="type.modal = null"><i class="icon-cross"></i></button>
 						<header class="item-group__modal__header">
 							<h3>{{ type.modal.name }}</h3>
-							<span class="price">{{ type.modal.price | currency:"Â£":0 }}</span>
+							<span class="price">{{ type.modal.price | currency:"£":0 }}</span>
 						</header>
 						<div class="item-group__modal__content">
-							<figure class="item-group__modal__pic"><img ng-src="{{ type.modal.modal.small }}" ez-plus ezp-options="ezOptions" ezp-model="{small:type.modal.modal.small, large:type.modal.modal.large}"></figure>
+							<figure class="item-group__modal__pic"><img alt="{{ type.modal.name }}" ng-src="{{ type.modal.modal.small }}" ez-plus ezp-options="ezOptions" ezp-model="{small:type.modal.modal.small, large:type.modal.modal.large}"></figure>
 						</div>
 					</div>
 				</div>
@@ -121,7 +120,7 @@
 							<h3 class="text-center">Delivery &amp; Returns</h3>
 							<ul class="list-unstyled text-center">
 								<li>Delivered within <strong>6 - 8 weeks</strong></li>
-								<li>Standard delivery price per seat <strong>Â£9.50</strong></li>
+								<li>Standard delivery price per seat <strong>£9.50</strong></li>
 								<li>Our <a href="/termsandconditions" scroll-to dom-element="#delivery" offset="-50">Delivery</a> and Returns policy</li>
 							</ul>
 						</div>
@@ -133,19 +132,19 @@
 			<div class="cameos h-centerer">
 				<div inertia-scroll>
 					<div class="cameos__cameo scroll-item">
-						<img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.cameos.cameoPic1 }}">
+						<img alt="{{ model.range.range }} Sofa (1)" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.cameos.cameoPic1 }}">
 						<span class="icon-overlay"></span>
 					</div>
 					<div class="cameos__cameo scroll-item">
-						<img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.cameos.cameoPic2 }}">
+						<img alt="{{ model.range.range }} Sofa (2)" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.cameos.cameoPic2 }}">
 						<span class="icon-overlay"></span>
 					</div>
 					<div class="cameos__cameo scroll-item">
-						<img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.cameos.cameoPic3 }}">
+						<img alt="{{ model.range.range }} Sofa (3)" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.cameos.cameoPic3 }}">
 						<span class="icon-overlay"></span>
 					</div>
 					<div class="cameos__cameo scroll-item">
-						<img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.cameos.cameoPic4 }}">
+						<img alt="{{ model.range.range }} Sofa (4)" ng-src="{{ model.range.activeColour.activeQuality.activeVariant.cameos.cameoPic4 }}">
 						<span class="icon-overlay"></span>
 					</div>
 				</div>
