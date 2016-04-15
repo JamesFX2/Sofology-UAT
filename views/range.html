@@ -1,0 +1,291 @@
+<!-- Meta -->
+<update-title title="{{ model.range.rangeTitleCase }} {{model.range.material }} Sofa Range | Sofology"></update-title>
+<update-meta name="description" content="{{ model.range.range }} {{model.range.material }} Sofa Range at a comfy price from Sofology. Delivery within 7 days, no hassle, no hot air and no hard sell."></update-meta>
+<update-meta itemprop="description" content="{{ model.range.range }} {{model.range.material }} Sofa Range at a comfy price from Sofology. Delivery within 7 days, no hassle, no hot air and no hard sell."></update-meta>
+</style>
+<div style="min-height: 1000px">
+	<div ng-show="model.loading === true" style="margin: 0 auto; text-align: center; padding-top: 30px;"><i class="fa fa-spinner fa-spin fa-2x"></i></div>
+
+	<div ng-show="model.loading == false" class="animated fadeIn">
+		<div ng-range class="range">
+
+			<header class="clearfix" sticky-class="rdp-stuck" body-class="body-rdp-stuck" sticky>
+				<div class="inner-header">
+					<h2 class="uppercase pull-left"><img src="http://images.sofology.co.uk/image/upload/v1459934842/Sofology/Range/rdp-logo.png">{{ model.range.range }}</h2>
+					<ul class="jump-menu list-unstyled list-inline" ng-class="{'active': isActive}">
+						<li ng-click="activeButton()" class="">Jump to… <i class="fa fa-angle-down"></i></li>
+						<li ng-click="hideJump()" scroll-to dom-element="#swatches" offset="-107">Swatches</li>
+						<li ng-click="hideJump()" scroll-to dom-element="#range-items" offset="-83">Items</li>
+						<li ng-click="hideJump()" scroll-to dom-element="#delivery" offset="-83">Delivery</li>
+						<li ng-click="hideJump()" scroll-to dom-element="#facts" offset="-83">Facts</li>
+						<li ng-click="hideJump()" scroll-to dom-element="#stores" offset="-83">Find a store</li>
+						<li ng-if="model.reviews.length > 0" ng-click="hideJump()" scroll-to dom-element="#reviews" offset="-83">Reviews</li>
+					</ul>
+				</div>
+			</header>
+
+			<!-- Showcase -->
+			<section class="main-product-visual">
+				<div class="thumbs" ng-if="model.range.videos.length < 1">
+					<slick settings="slicks.visualOptions" class="visual-options">
+						<li class="visual-options__option visual-options__option--active" ng-click="updateHero('lifestyle', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.lifestyle.thumb }}"></li>
+						<li class="visual-options__option visual-options__option--scoop" ng-click="updateHero('scoop', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.scoop.thumb }}"></li>
+						<li class="visual-options__option" ng-click="updateHero('cameoPic1', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero.cameoPic1.thumb }}"></li>
+						<li class="visual-options__option" ng-click="updateHero('cameoPic2', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero.cameoPic2.thumb }}"></li>
+						<li class="visual-options__option" ng-click="updateHero('cameoPic3', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero.cameoPic3.thumb }}"></li>
+						<li class="visual-options__option" ng-click="updateHero('cameoPic4', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero.cameoPic4.thumb }}"></li>
+					</slick>
+				</div>
+				<div class="thumbs" ng-if="model.range.videos.length > 0">
+					<slick settings="slicks.visualOptions" class="visual-options">
+						<li class="visual-options__option visual-options__option--active" ng-click="updateHero('lifestyle', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.lifestyle.thumb }}"></li>
+						<li class="visual-options__option visual-options__option--scoop" ng-click="updateHero('scoop', $event, model.range)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.scoop.thumb }}"></li>
+						<li class="visual-options__option visual-options__option--video" ng-repeat="video in model.range.videos" ng-click="updateHero(video.type, $event, model.range, video)"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.hero['cameoPic' + ($index+1)].thumb }}"></li>
+					</slick>
+				</div>
+				<figure ng-class="activeHero == 'scoop' ? 'view-area ' + 'scooped' : 'view-area ' + 'lifestyle' " id="Hero"><img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.referenceProduct.hero.lifestyle.full }}"></figure>
+			</section>
+
+			<!-- Materials -->
+			<div class="materials u-pt">
+					<h2 id="swatches" class="text-center">Choose from {{ model.range.availableVariants }} {{ model.range.material }}{{ model.range.availableVariants > 1 ? 's' : '' }}</h2>
+					<div class="colours">
+						<ul class="list-inline list-unstyled u-pr-" inertia-scroll>
+							<li ng-repeat="colour in model.range.rangeColours" ng-click="updateActiveColour(model.range, colour)" class="{{ model.range.activeColour === colour ? 'active' : '' }}">
+								<div class="colour-box colour-box--{{ colour.name | lowercase }}">
+									<span class="quantity centerer">{{ colour.quantity }}</span>
+								</div>
+								<span class="colour-title uppercase scroll-item">{{ colour.name }}s</span>
+							</li>
+						</ul>
+					</div><!--
+			 --><div class="available-swatches">
+						<div class="inner-wrapper">
+							<div class="message message--missing-swatches text-center city--ph++ city-pt fade"><p><i class="icon-information"></i>Some images in your chosen colour may not be available.</p></div>
+							<ul class="swatch-group list-unstyled list-inline u-p-" vertilize-container inertia-scroll inertia-refresh="activeColourChange">
+								<li ng-repeat="variant in model.range.activeColour.activeQuality.variants" ng-click="updateActiveVariant(model.range, variant)" class="{{ model.range.activeColour.activeQuality.activeVariant === variant ? 'active' : '' }} text-center scroll-item">
+									<figure>
+										<img class="variant-thumb u-mb-" ng-src="{{ variant.thumb }}">
+										<figcaption class="variant-name" vertilize>{{ variant.name }}</figcaption>
+										<span class="active icon-tick" vertilize>Selected Swatch</span>
+									</figure>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+			</div>
+
+
+			<!-- Items -->
+			<div id="range-items" class="range-items">
+				<header class="text-center">
+					<h2>Choose from {{ model.range.activeColour.activeQuality.activeVariant.quantity }} items, priced in <span class="colour">{{ model.range.activeColour.name }}, {{ model.range.activeColour.activeQuality.activeVariant.name }}</span></h2>
+				</header>
+				<div class="item-group" ng-repeat="type in model.range.activeColour.activeQuality.activeVariant.productTypes">
+					<div class="scroller" inertia-scroll>
+						<div class="item-group__header u-p u-pv- city-pv clearfix">
+							<h3 class="pull-left">{{ type.name }}</h3>
+							<span class="pull-right item-count">{{ type.items.length }} items</span>
+						</div>
+						<range-items type="type" items="type.items" get-outlet-data="model.getOutletData" class="clearfix"></range-items>
+					</div>
+					<div class="item-group__modal fade" ng-if="type.modal">
+						<button class="btn close" ng-click="type.modal = null"><i class="icon-cross"></i></button>
+						<header class="item-group__modal__header">
+							<h3>{{ type.modal.name }}</h3>
+							<span class="price">{{ type.modal.price | currency:"£":0 }}</span>
+						</header>
+						<div class="item-group__modal__content">
+							<figure class="item-group__modal__pic"><img ng-src="{{ type.modal.modal.small }}" ez-plus ezp-options="ezOptions" ezp-model="{small:type.modal.modal.small, large:type.modal.modal.large}"></figure>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Blurbs -->
+			<div id="delivery" class="blurbs text-centerer">
+				<div class="blurbs__inner">
+					<div class="layout layout--flush u-ph continent-ph++">
+						<div class="blurbs__blurb blurb--different layout__item u-1/2-country u-mb+  city-mb+ continent-ph++ text-center">
+							<span class="icon icon-sofology-circle"></span>
+							<h3 class="text-center">Sofology is different...</h3>
+							<ul class="list-unstyled text-center">
+								<li>10 year guarantee on every sofa</li>
+								<li>Low low prices, not yo-yo prices</li>
+								<li>No Salesmen, No Commission, No Pressure</li>
+							</ul>
+						</div><!--
+						--><div class="blurbs__blurb blurb--delivery layout__item u-1/2-country  continent-ph++ text-center">
+							<span class="icon icon-delivery-circle"></span>
+							<h3 class="text-center">Delivery &amp; Returns</h3>
+							<ul class="list-unstyled text-center">
+								<li>Delivered within <strong>6 - 8 weeks</strong></li>
+								<li>Standard delivery price per seat <strong>£9.50</strong></li>
+								<li>Our <a href="/termsandconditions" scroll-to dom-element="#delivery" offset="-50">Delivery</a> and Returns policy</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Cameos -->
+			<div class="cameos h-centerer">
+				<div inertia-scroll>
+					<div class="cameos__cameo scroll-item">
+						<img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.cameos.cameoPic1 }}">
+						<span class="icon-overlay"></span>
+					</div>
+					<div class="cameos__cameo scroll-item">
+						<img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.cameos.cameoPic2 }}">
+						<span class="icon-overlay"></span>
+					</div>
+					<div class="cameos__cameo scroll-item">
+						<img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.cameos.cameoPic3 }}">
+						<span class="icon-overlay"></span>
+					</div>
+					<div class="cameos__cameo scroll-item">
+						<img ng-src="{{ model.range.activeColour.activeQuality.activeVariant.cameos.cameoPic4 }}">
+						<span class="icon-overlay"></span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Features & Description -->
+			<div id="facts" class="facts-description city-ph">
+				<div class="tabs-wrapper continent-ph++">
+					<ul class="tabs u-ph city-ph++">
+						<li class="{{ model.range.showFacts ? 'active' : '' }} tabs__item" ng-click="model.range.showFacts = true"><span>Key Facts</span></li>
+						<li class="{{ model.range.showFacts ? '' : 'active' }} tabs__item" ng-click="model.range.showFacts = false"><span>Description</span></li>
+					</ul>
+				</div>
+				<div class="tabs-content-wrapper continent-ph++">
+					<div class="key-facts u-ph+" ng-show="model.range.showFacts">
+						<ul class="layout layout--small">
+							<div ng-repeat="fact in model.range.keyFacts" class="layout__item u-1/2-country country-ph+">
+								<li>{{ fact.description }}</li>
+							</div>
+						</ul>
+					</div>
+					<div class="description u-p+" ng-hide="model.range.showFacts">
+						<p>{{ model.range.description }}</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Vidoes -->
+			<div class="videos">
+				<header class="u-p text-center">
+					<h3>See for yourself</h3>
+				</header>
+				<span class="video-container"></span>
+				<span class="video-container"></span>
+				<span class="video-container"></span>
+			</div>
+
+			<!-- Ways to Pay -->
+			<div class="ways-to-pay text-center u-ph city-ph-">
+				<div class="inner">
+					<div class="layout layout--flush city-ph">
+						<h3>3 easy ways to pay</h3>
+						<div class="layout__item u-1/3-country country-ph-">
+							<div class="block u-mb+">
+								<span class="interest-free-credit icon icon-percent-circle"></span>
+								<h4>Up to 4 years interest free credit</h4>
+								<p>With 0% finance available, we can create an interest free payment plan to suit you</p>
+							</div>
+						</div><!--
+						--><div class="layout__item u-1/3-country country-ph">
+							<div class="block u-mb+">
+								<span class="payment-methods icon icon-cc-circle"></span>
+								<h4>Cash, Debit or Credit Card</h4>
+								<p>To keep it nice and simple, just pay by cash. You can even pay a 10% deposit and pay the remaining before delivery</p>
+							</div>
+						</div><!--
+						--><div class="layout__item u-1/3-country country-ph">
+							<div class="block">
+								<span class="buy-now-pay-later icon icon-cc-time-circle"></span>
+								<h4>Buy now pay nothing for a year</h4>
+								<p>For a comfier way to pay, put down a 10% deposit today and pay nothing for a whole year</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Nearest Stores -->
+			<div id="stores" class="nearest-stores u-p u-ph- village-ph++ city-ph+">
+				<form name="postcodeSearch" class="form postcode-search u-pt continent-pt+ city-mh+ country-mh++ country-ph+" id="find-a-store" ng-submit="model.submit()">
+					<header class="text-center u-mb">
+						<h1>Sofology - Designed to feel different.</h1>
+						<h2 ng-if="model.stores.length <= 0">Find your nearest store</h2>
+						<h2 ng-if="model.stores.length >= 1">Your nearest stores...</h2>
+					</header>
+					<div class="layout layout--flush u-mb continent-mv+" ng-class="storesClass" vertilize-container>
+						<div class="layout__item u-1/2 u-ph-- city-ph+" ng-repeat="store in model.stores | orderBy:order | limitTo:2 | unique:'id'" vertilize>
+							<address>
+								<p class="u-mb city">
+									<span ng-if="store.outlet" class="store-name">{{store.outlet}} Sofology</span>
+									<span ng-if="store.addressOne" class="address">{{store.addressOne}}, </span>
+									<span ng-if="store.addressTwo" class="address">{{store.addressTwo}}, </span>
+									<span ng-if="store.addressThree" class="address">{{store.addressThree}}, </span>
+									<span ng-if="store.town" class="address">{{store.town}}, </span>
+									<span ng-if="store.county" class="address">{{store.county}}, </span>
+									<span ng-if="store.postCode" class="address">{{store.postCode}}</span>
+								</p>
+
+							</address>
+							<div class="actions u-ph-- city-ph+"><a class="btn btn--inverted uppercase u-ph--" ng-href="/store-locator/{{store.outlet}}" scroll-to >Get Directions</a></div>
+						</div>
+					</div>
+					<fieldset class="controls u-pt u-pt continent-mv continent-pt+">
+						<input type="text" placeholder="Postcode or Town *" ng-model="model.postcode"  ng-bind="model.postcode" name="postcode" id="userPostcode" autocomplete="off" required>
+						<input type="submit" class="btn btn--inverted uppercase btn-go" value="Go"  analytics-on="click" analytics-category="Store-finder" analytics-event="Searched for store">
+					</fieldset>
+				</form>
+			</div>
+
+			<!-- Advice and Contact -->
+			<div class="advice-and-contact text-center">
+				<div class="inner town-p">
+					<div class="inner-content">
+						<h2>Looking for help &amp; advice? <strong>We're here to help</strong></h2>
+						<div class="layout layout--flush u-pv u-mh- city-pt city-mt">
+							<div class="layout__item u-1/2 u-ph-- city-ph continent-pr+">
+								<h3>Call us...</h3>
+								<p class="u-mb">Call us FREE, we're open <br />today 8am - 11pm</p>
+								<p class="tel">0800 140 4040</p>
+							</div><!--
+							--><div class="layout__item u-1/2 u-ph-- city-ph-- continent-pl+">
+								<h3>We'll call you...</h3>
+								<p class="city-mb">Choose a time that suits you and we will give you a call</p>
+
+
+								<button ng-href click-contact-us  enquiry-type="contactUs" class="btn btn--inverted uppercase">Request Call</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Reviews -->
+			<div id="reviews" class="reviews country-ph+" ng-if="model.reviews.length > 0">
+				<header class="text-center u-pv town-ph++">
+					<h2 class="u-pb city-mh+ city-ph++">Review summary on the {{ model.range.range }} Collection</h2>
+				</header>
+				<div class="ratings town-ph++">
+					<p class="uppercase reviews__average reviews__average--{{ model.averageReviewClass }} city-mh++">{{ model.averageReview }} based on {{ model.reviews.length }} reviews</p>
+					<ul class="list-unstyled u-pb city-ph++">
+						<li ng-repeat="stat in model.reviewStats track by $index" class="u-mb-"><span class="bar"><span class="colour" style="width: {{ stat.percentage }}%;"></span></span><span class="total pull-right">({{ stat.total }})</span></li>
+					</ul>
+				</div>
+				<slick settings="slicks.reviews">
+					<article class="reviews__review" ng-repeat="review in model.reviews">
+						<h2 class="u-mb-"><i class="icon-user"></i>{{ review.firstname }} {{ review.surname }}</h2>
+						<p>{{ review.review }}</p>
+					</article>
+				</slick>
+			</div>
+		</div>
+	</div>
+</div>
+<div keep-scroll-pos></div>
