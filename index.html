@@ -1,0 +1,102 @@
+<!doctype html>
+<html ng-app="store" ng-controller="appController as model">
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-Language" content="en" />
+		<meta name="description" content="" />
+		<meta property="og:title" content="" />
+		<meta itemprop="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="fragment" content="!"
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link href="/favicon.ico" type="image/x-icon" rel="icon" /><link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+		<!-- Main CSS -->
+		<link rel="stylesheet" type="text/css" href="/assets/css/master.css">
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<!-- Slick -->
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
+		<!-- 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick-theme.css"/> -->
+		<link rel="stylesheet" type="text/css" href="/assets/css/animate.css" v>
+		<base href="/">
+	</head>
+
+	<body ng-cloak class="{{ bodyClass }} {{ model.bodyClasses }}" ng-class="{{sticky}}">
+
+		<!-- Google Tag Manager -->
+		<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5GQGW7"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-5GQGW7');</script>
+		<!-- End Google Tag Manager -->
+	    <!--[if lte IE 8]>
+	      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	    <![endif]-->
+
+		<div>
+			<header ng-include="'views/partials/header.html'" role="banner"></header>
+			<nav ng-include="'views/partials/nav.html'" class="navbar show-city"></nav>
+		<div>
+
+		<div class="secondary-nav uppercase show-city">
+			<div class="container">
+				<ul class="layout layout--flush city-ph">
+					<li class="layout__item u-1/3 u-1/4-city u-1/3-country">
+						<a href="/sofology" scroll-to dom-element="#lowlow-panel" class="icon-lowlow">Low Low Prices<span class="debug show-country">, Not Yo-Yo Prices</span></a>
+					</li><!--
+					--><li class="layout__item u-1/3 u-2/4-city u-1/3-country">
+						<a href="/sofology" scroll-to dom-element="#no-pounce-panel" class="icon-no-salesmen">No Salesman, No Commission, No Pressure</a>
+					</li><!--
+					--><li class="layout__item u-1/3 u-1/4-city u-1/3-country">
+						<a href="/sofology" scroll-to dom-element="#sofology-guaranteed-panel" class="icon-10yr-guarantee">10 Year Guarantee <span class="debug show-country">On Every Sofa</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<main id="sp-page">
+			<div class="trustpilot-widget show-m debug" data-locale="en-US" data-template-id="5419b732fbfb950b10de65e5" data-businessunit-id="52a887ce00006400057794e1" data-style-height="20px" data-style-width="100%" data-theme="dark">
+				<a href="https://www.trustpilot.com/review/sofaworks.co.uk" target="_blank"></a>
+			</div>
+			 <div ui-view></div>
+		</main>
+
+		<footer id="global-footer" ng-include="'views/partials/footer.html'"></footer>
+
+		<span class="widget-breakpoint pull-right">Breakpoint</span>
+
+		<script src="scripts/combined-1578cf2afa.js"></script>
+
+		<script src="/app.config.js"></script>
+		<script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
+		<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.sync.bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.js"></script>
+
+		<!--
+			<script type="text/javascript">
+				window.INTILERY = {}; INTILERY.gaq = [];
+				var _itq = _itq || [];
+				/* _itq.push(["_setAccount", "{{intilery}}"]); */
+				_itq.push(["_setAccount", "96"]);
+				(function(){
+					var it = document.createElement('script'); it.type = 'text/javascript'; it.async = true;
+					it.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.intilery-analytics.com/rest/md/96';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(it, s);
+				})();
+			</script>
+		-->
+
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-45934115-1', 'auto');
+		</script>
+
+	</body>
+</html>
