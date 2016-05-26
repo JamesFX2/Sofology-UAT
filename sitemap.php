@@ -16,7 +16,6 @@ $header = array('Referer: http://test.com',
 
 
 	
-		
 function getWebPage($url)
 {
 	global $header;
@@ -79,19 +78,20 @@ function getWebPagePassword($url)
 	
 	//print_r($ranges);die;
 	
-	$getStatic = getWebPagePassword('http://www.sofology.co.uk/app.routes.js');
+	$getStatic = getWebPagePassword('https://www.sofology.co.uk/app.routes.js');
 	$staticProc = findCodes($getStatic," url: '","'");
+	
 	
 	$static = array();
 	foreach ($staticProc as $key => $page)
 	{
-		if(strpos($page,":")===false && strpos($page,"^")===false)
+		if(strpos($page,":")===false && strpos($page,"^/{id}")===false)
 		{
 
-		$static[] = "https://www.sofology.co.uk".$page;
+		$static[] = "https://www.sofology.co.uk".str_replace("^","",$page);
 		}
 	}	
-	//print_r($static);die;
+	
 	//$static pages are set.
 	
 	
@@ -213,9 +213,9 @@ fclose($fp);
 	//print_r($allPages);
 	
 
-
 header("HTTP/1.1 301 Moved Permanently"); 
 header("Location: sitemap.xml");
+		
 	
 	
 	
@@ -258,11 +258,7 @@ function findCodes($data,$stringstart,$stringend)
 	
 	
 	
-	
 
-
-
-	
 
 
 
