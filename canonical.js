@@ -8,7 +8,7 @@ function cleanCanonicalURL(url) {
 
     url = url.slice(0, -1);
   }
-  return url;
+  return url.toLowerCase();
 }
 
 function addCanonicalURL() {
