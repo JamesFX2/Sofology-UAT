@@ -170,6 +170,9 @@ var rdpModule = (function () {
         loadSelectedSwatchByName(data.selectedSwatch);
         loadProductsForSelectedSwatch(selectedSwatch, data.name);
     }
+    function outputSwatches() {
+        return rangeData;
+    }    
 
     function loadSelectedSwatchByName(swatchName) {
         selectedSwatch = $.grep(rangeData.swatches, function (n, i) {
@@ -666,6 +669,9 @@ var rdpModule = (function () {
         init: function (rangeName) {
             getData(rangeName);
         },
+        data: function() {
+          return outputSwatches();
+        },        
         loadConfiguratorForProduct: function (rangeName, swatchName, index) {
             loadConfiguratorForProduct(rangeName, swatchName,  index);
         },
